@@ -1,1 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
 
+.memory {
+    width: 350px;
+    border: 3px solid black;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.segment {
+    padding: 15px;
+    border-bottom: 2px solid black;
+    text-align: center;
+    font-weight: bold;
+}
+
+#text-segment { background-color: #ffcccb; }
+#data-segment { background-color: #ffeb99; }
+#heap { background-color: #add8e6; min-height: 50px; }
+#stack { background-color: #90ee90; min-height: 50px; }
+
+button {
+    margin: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.legend div {
+    padding: 5px;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+#legend-text { background-color: #ffcccb; }
+#legend-data { background-color: #ffeb99; }
+#legend-heap { background-color: #add8e6; }
+#legend-stack { background-color: #90ee90; }
+
+.heap-block {
+    background-color: #007bff;
+    color: white;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 3px;
+}
+
+.stack-frame {
+    background-color: #228B22;
+    color: white;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 3px;
+}

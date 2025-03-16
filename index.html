@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione della Memoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Rappresentazione Grafica della Gestione della Memoria</h2>
+    <div class="memory">
+        <div id="text-segment" class="segment">Text Segment (Codice Eseguibile)</div>
+        <div id="data-segment" class="segment">Data Segment (Variabili Globali e Statiche)</div>
+        <div id="heap" class="segment">Heap (Memoria Allocata Dinamicamente)</div>
+        <div id="stack" class="segment">Stack (Chiamate Funzioni e Variabili Locali)</div>
+    </div>
+    <button onclick="allocateMemory()">Allocare Memoria</button>
+    <button onclick="deallocateMemory()">Deallocare Memoria</button>
+    <button onclick="simulateFunctionCall()">Chiamata Funzione</button>
+    <button onclick="removeFunctionCall()">Termina Funzione</button>
+    
+    <div class="legend">
+        <div id="legend-text">Text Segment</div>
+        <div id="legend-data">Data Segment</div>
+        <div id="legend-heap">Heap</div>
+        <div id="legend-stack">Stack</div>
+    </div>
+    
+    <script>
+        let heapCount = 0;
+        let stackCount = 0;
+        const maxHeapBlocks = 5;
+        const maxStackFrames = 5;
 
+        function allocateMemory() {
+            if (heapCount < maxHeapBlocks) {
+                let heap = document.getElementById("heap");
+                let block = document.createElement("div");
+                block.className = "heap-block";
+                block.textContent = "Blocco " + (heapCount + 1);
+                heap.appendChild(block);
+                heapCount++;
+            } else {
+                alert("Heap pieno! Deallocare prima di allocare nuovi blocchi.");
+            }
+        }
+        
+        function deallocateMemory() {
+            let heap = document.getElementById("heap");
+            if (heap.lastChild && heapCount > 0) {
+                heap.removeChild(heap.lastChild);
+                heapCount--;
+            }
+        }
+        
+        function simulateFunctionCall() {
+            if (stackCount < maxStackFrames) {
+                let stack = document.getElementById("stack");
+                let frame = document.createElement("div");
+                frame.className = "stack-frame";
+                frame.textContent = "Frame " + (stackCount + 1);
+                stack.appendChild(frame);
+                stackCount++;
+            } else {
+                alert("Stack pieno! Terminare una funzione prima di aggiungerne un'altra.");
+            }
+        }
+
+        function removeFunctionCall() {
+            let stack = document.getElementById("stack");
+            if (stack.lastChild && stackCount > 0) {
+                stack.removeChild(stack.lastChild);
+                stackCount--;
+            }
+        }
+    </script>
+</body>
+</html>
